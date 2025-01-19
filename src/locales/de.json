@@ -11,7 +11,7 @@
         "minimize_description_default": "Beschreibung standardmäßig minimieren",
         "show_comments": "Kommentare anzeigen",
         "default_homepage": "Startseite",
-        "country_selection": "Land",
+        "country_selection": "Land/Region",
         "buffering_goal": "Pufferungsziel (in Sekunden)",
         "default_quality": "Standardqualität",
         "audio_only": "Nur Audio",
@@ -66,7 +66,7 @@
         "delete_playlist": "Playlist löschen",
         "please_select_playlist": "Bitte wähle eine Playlist",
         "select_playlist": "Wähle eine Playlist",
-        "show_markers": "Markierungen auf dem Player anzeigen",
+        "show_markers": "Markierungen im Fortschrittsbalken anzeigen",
         "delete_account": "Konto löschen",
         "logout": "Von diesem Gerät abmelden",
         "minimize_recommendations_default": "Empfehlungen standardmäßig minimieren",
@@ -82,7 +82,7 @@
         "with_timecode": "Mit Zeitstempel teilen",
         "follow_link": "Link öffnen",
         "copy_link": "Link kopieren",
-        "time_code": "Zeitstempel (in Sekunden)",
+        "time_code": "Zeitstempel (in Sekunden oder HH:MM:SS)",
         "reset_preferences": "Einstellungen zurücksetzen",
         "confirm_reset_preferences": "Bist du sicher, dass du deine Einstellungen zurücksetzen möchtest?",
         "backup_preferences": "Einstellungen sichern",
@@ -137,11 +137,22 @@
         "playback_speed": "Wiedergabegeschwindigkeit",
         "delete_group_confirm": "Diese Gruppe löschen?",
         "concurrent_prefetch_limit": "Limit für gleichzeitigen Stream Prefetch",
-        "prefer_hls": "HLS gegenüber DASH bevorzugen"
+        "prefer_hls": "HLS gegenüber DASH bevorzugen",
+        "mark_as_unwatched": "Als ungesehen markieren",
+        "mark_as_watched": "Als gesehen markieren",
+        "export_history": "Verlauf exportieren",
+        "import_history": "Verlauf importieren",
+        "file_format": "Dateiformat",
+        "override": "Überschreiben",
+        "import": "Importieren",
+        "export": "Exportieren",
+        "always": "Immer",
+        "playlists_only": "Nur Playlists",
+        "never": "Nie"
     },
     "player": {
         "watch_on": "Auf {0} ansehen",
-        "failed": "Fehlgeschlagen mit Fehlercode {0}, siehe Protokolle für weitere Informationen"
+        "failed": "Fehlgeschlagen mit Fehlercode {0}. Siehe Protokolle für weitere Informationen."
     },
     "titles": {
         "history": "Verlauf",
@@ -230,6 +241,11 @@
         "hours": "{amount} Stunde(n)",
         "days": "{amount} Tag(e)",
         "login_note": "Melde dich mit einem Konto an, das du auf dieser Instanz erstellt hast.",
-        "register_note": "Erstelle ein Konto für diese Piped-Instanz. Dadurch kannst du deine Abos und Playlists mit deinem Konto synchronisieren, sie werden also serverseitig gespeichert. Du kannst all diese Funktionen auch ohne Konto nutzen, allerdings werden dann alle Daten nur im lokalen Speicher deines Browsers gespeichert. Bitte stelle sicher, dass du KEINE E-Mail-Adresse als Benutzernamen verwendest und ein sicheres Passwort wählst, welches du nicht bereits woanders nutzt."
+        "register_note": "Erstelle ein Konto für diese Piped-Instanz. Dadurch kannst du deine Abos und Playlists mit deinem Konto synchronisieren, sie werden also serverseitig gespeichert. Du kannst all diese Funktionen auch ohne Konto nutzen, allerdings werden dann alle Daten nur im lokalen Speicher deines Browsers gespeichert. Bitte stelle sicher, dass du KEINE E-Mail-Adresse als Benutzernamen verwendest und ein sicheres Passwort wählst, welches du nicht bereits woanders nutzt.",
+        "found_n_items": "{0} Objekte gefunden",
+        "error": "Fehler",
+        "success": "Erfolg",
+        "skipped": "Übersprungen",
+        "selected_subscriptions": "Ausgewählte Abos"
     }
 }

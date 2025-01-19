@@ -47,7 +47,7 @@
                 <div class="flex flex-auto gap-2">
                     <span v-t="{ path: 'video.views', args: { views: addCommas(video.views) } }" />
                     <span> | </span>
-                    <span v-text="uploadDate" />
+                    <span :title="new Date(video.uploadDate).toLocaleString()" v-text="uploadDate" />
                 </div>
                 <!-- Likes/dilikes -->
                 <div class="flex gap-2">
@@ -212,7 +212,11 @@
         <input id="chkAutoLoop" v-model="selectedAutoLoop" class="ml-1.5" type="checkbox" @change="onChange($event)" />
         <br />
         <label for="chkAutoPlay"><strong v-text="`${$t('actions.auto_play_next_video')}:`" /></label>
-        <input id="chkAutoPlay" v-model="selectedAutoPlay" class="ml-1.5" type="checkbox" @change="onChange($event)" />
+        <select id="chkAutoPlay" v-model="selectedAutoPlay" class="select ml-1.5" @change="onChange($event)">
+            <option v-t="'actions.never'" value="0" />
+            <option v-t="'actions.playlists_only'" value="1" />
+            <option v-t="'actions.always'" value="2" />
+        </select>
 
         <hr />
 
@@ -424,7 +428,7 @@ export default {
     },
     activated() {
         this.active = true;
-        this.selectedAutoPlay = this.getPreferenceBoolean("autoplay", false);
+        this.selectedAutoPlay = this.getPreferenceNumber("autoplay", 1);
         this.showComments = !this.getPreferenceBoolean("minimizeComments", false);
         this.showDesc = !this.getPreferenceBoolean("minimizeDescription", true);
         this.showRecs = !this.getPreferenceBoolean("minimizeRecommendations", false);
@@ -623,8 +627,8 @@ export default {
         onVideoEnded() {
             if (
                 !this.selectedAutoLoop &&
-                this.selectedAutoPlay &&
-                (this.playlist?.relatedStreams?.length > 0 || this.video.relatedStreams.length > 0)
+                ((this.selectedAutoPlay >= 1 && this.playlist?.relatedStreams?.length > this.index) ||
+                    (this.selectedAutoPlay >= 2 && this.video.relatedStreams.length > 0))
             ) {
                 this.showToast();
             }

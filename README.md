@@ -51,12 +51,6 @@ By using Piped, you can freely watch and listen to content without the fear of p
 -   [x] Public [JSON API](https://docs.piped.video/docs/api-documentation/)
 -   [x] Federated protocol on Matrix to let instances collaborate with each other
 
-## Screenshots
-
-| Player                                                                                                        | Trending                                                                                                      | Channel                                                                                                       |
-| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| ![Screenshot 1](https://cloudflare-ipfs.com/ipfs/bafybeiaxhsog7jzydr7xb3xhlemxilqksceqg5fraaiuojzclhocsqrcvq) | ![Screenshot 2](https://cloudflare-ipfs.com/ipfs/bafybeigafumvrgbfyufxjptvufobstrywrfv2kteyuuictfko6kvghjszu) | ![Screenshot 3](https://cloudflare-ipfs.com/ipfs/bafybeiehs5xjqmmq34gmewxoqm3j3b2ze3pve4sdmanz7ukrxwgrcmxnry) |
-
 ## Having trouble?
 If you have any general questions regarding how Piped works or trouble setting up your own instance, please consult the following public chat rooms and documentation for help. Please use these platforms exclusively for such cases and do NOT open an issue.
 
@@ -74,6 +68,8 @@ The source code of the documentation website is available at https://github.com/
 ### Documentation
 
 The documentation can be found at https://docs.piped.video (accessible via IPNS as well).
+
+The API specification is located at https://github.com/TeamPiped/OpenAPI.
 
 ## Extensions
 
@@ -118,19 +114,9 @@ pnpm dev
 
 You can now make changes and view then in realtime!
 
-## Contact
-
-If you would like to contact me personally, you may do so with the following means:
-
--   Matrix: @kavin1337:matrix.org
--   Mastodon: https://mastodon.online/@kavin
--   Email: kavin@kavin.rocks
-
-Please note that isn't meant for support, see [Public Chat Rooms/Communities](#public-chat-roomscommunities) for that.
-
 ## Donations
 
-Donations can be made at:
+Donations (to Kavin) can be made at:
 
 -   bc1qhq8zjxmu405nvp37njj6zv3s980zg400pu9jfe (BTC)
 -   0x1D77D4cfB1a947514241bcf19B1F04738495e2fD (ETH)
@@ -140,8 +126,8 @@ Donations can be made at:
 
 FIAT donations can be made at:
 
-- https://liberapay.com/kavin (Author of project, used for Project infrastructure maintenance, and official instance)
-- https://liberapay.com/Bnyro (Maintainer of repo)
+- https://liberapay.com/kavin (Initial author)
+- https://liberapay.com/Bnyro (Project maintainer)
 
 Contributions in any other form are also welcomed.
 
@@ -149,24 +135,29 @@ Contributions in any other form are also welcomed.
 
 **Mobile/desktop apps**
 -   [LibreTube](https://github.com/Libre-tube/LibreTube) - Alternative frontend for YouTube for Android.
--   [YTDLnis](https://github.com/deniscerri/ytdlnis) - Video and audio downloader for Android that uses Piped to update formats.
 -   [Yattee](https://github.com/yattee/yattee) - Alternative frontend for YouTube for MacOS / iOS.
+-   [YTDLnis](https://github.com/deniscerri/ytdlnis) - Video and audio downloader for Android that uses Piped to update formats.
 -   [Pipeline](https://gitlab.com/schmiddi-on-mobile/pipeline) - Alternative frontend for YouTube for Linux.
 -   [PlasmaTube](https://apps.kde.org/plasmatube/) - Alternative frontend for YouTube for Linux.
--   [PsTube](https://github.com/prateekmedia/pstube) - Watch and download videos without ads on Android, Linux, Windows, iOS, and Mac OSX.
 -   [Harmony Music](https://github.com/anandnet/Harmony-Music) - YouTube Music alternative for Android/Windows/Debian, built with Flutter that supports piped linking for playlists.
--   [VibeYou](https://github.com/you-apps/VibeYou) - Privacy focused music player for Android supporting playback via Piped.
+
 
 **Web apps**
--   [Piped-Material](https://github.com/mmjee/Piped-Material) - Fork of Piped, focusing on better performance and a more usable design.
 -   [Hyperpipe](https://codeberg.org/Hyperpipe/Hyperpipe) - Alternative privacy respecting front-end for YouTube Music.
--   [ytify](https://github.com/n-ce/ytify) - Complementary audio streaming frontend for YouTube & YouTube Music.
+-   [ytify](https://github.com/n-ce/ytify) - Complementary audio streaming frontend for YouTube & YouTube Music. 
+-   [Piped-Material](https://github.com/mmjee/Piped-Material) - Fork of Piped, focusing on better performance and a more usable design.
 -   [Musicale](https://github.com/Bellisario/musicale) - Alternative frontend for YouTube Music with style.
+
+
+**Not Under Active Development**
+  
+-   [PsTube](https://github.com/prateekmedia/pstube) - Watch and download videos without ads on Android, Linux, Windows, iOS, and Mac OSX.
+-   [VibeYou](https://github.com/you-apps/VibeYou) - Privacy focused music player for Android supporting playback via Piped.
+  
 -   [conduit](https://github.com/ai25/conduit) - Alternative frontend for YouTube, with a modern player and watch together capabilities.
 -   [DeskVideo](https://github.com/malisipi/DeskVideo) - Desktop styled, customizable alternative frontend for YouTube.
 -   [ReacTube](https://github.com/NeeRaj-2401/ReacTube) - Privacy friendly & distraction free YouTube frontend.
 
-**Other**
 -   [vidyodl](https://github.com/MrKovar/vidyodl) - Simple API to download videos from YouTube, using Piped.
 -   [Piped Addon for Kodi](https://github.com/syhlx/plugin.video.piped) - Kodi plugin for Piped.
 

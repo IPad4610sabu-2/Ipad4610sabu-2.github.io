@@ -1,7 +1,7 @@
 <template>
     <div v-if="showVideo" class="flex flex-col flex-justify-between">
         <router-link
-            class="inline-block w-full focus:underline hover:underline"
+            class="link inline-block w-full"
             :to="{
                 path: '/watch',
                 query: {
@@ -15,7 +15,7 @@
             <div class="w-full">
                 <img
                     loading="lazy"
-                    class="aspect-video w-full object-contain"
+                    class="aspect-video w-full rounded-md object-contain"
                     :src="thumbnail"
                     :alt="title"
                     :class="{ 'shorts-img': item.isShort, 'opacity-75': item.watched }"
@@ -82,12 +82,17 @@
                     <i v-if="item.uploaderVerified" class="i-fa6-solid:check ml-1.5" />
                 </router-link>
 
-                <div v-if="item.views >= 0 || item.uploadedDate" class="mt-1 text-xs text-gray-300 font-normal">
+                <div v-if="item.views >= 0 || item.uploadedDate" class="video-info">
                     <span v-if="item.views >= 0">
                         <i class="i-fa6-solid:eye" />
                         <span class="pl-1" v-text="`${numberFormat(item.views)} •`" />
                     </span>
-                    <span v-if="item.uploaded > 0" class="pl-0.5" v-text="timeAgo(item.uploaded)" />
+                    <span
+                        v-if="item.uploaded > 0"
+                        class="pl-0.5"
+                        :title="new Date(item.uploaded).toLocaleString()"
+                        v-text="timeAgo(item.uploaded)"
+                    />
                     <span v-else-if="item.uploadedDate" class="pl-0.5" v-text="item.uploadedDate" />
                 </div>
             </div>
@@ -121,6 +126,18 @@
                     @click="showConfirmRemove = true"
                 >
                     <i class="i-fa6-solid:circle-minus" />
+                </button>
+                <button
+                    v-if="showMarkOnWatched && isFeed"
+                    ref="watchButton"
+                    @click="toggleWatched(item.url.substr(-11))"
+                >
+                    <i
+                        v-if="item.watched && item.currentTime > item.duration * 0.9"
+                        :title="$t('actions.mark_as_unwatched')"
+                        class="i-fa6-solid:eye-slash"
+                    />
+                    <i v-else :title="$t('actions.mark_as_watched')" class="i-fa6-solid:eye" />
                 </button>
                 <ConfirmModal
                     v-if="showConfirmRemove"
@@ -171,13 +188,14 @@ export default {
         preferListen: { type: Boolean, default: false },
         admin: { type: Boolean, default: false },
     },
-    emits: ["remove"],
+    emits: ["update:watched", "remove"],
     data() {
         return {
             showPlaylistModal: false,
             showShareModal: false,
             showVideo: true,
             showConfirmRemove: false,
+            showMarkOnWatched: false,
         };
     },
     computed: {
@@ -190,6 +208,7 @@ export default {
     },
     mounted() {
         this.shouldShowVideo();
+        this.shouldShowMarkOnWatched();
     },
     methods: {
         removeVideo() {
@@ -212,6 +231,38 @@ export default {
                 }
             };
         },
+        shouldShowMarkOnWatched() {
+            this.showMarkOnWatched = this.getPreferenceBoolean("watchHistory", false);
+        },
+        toggleWatched(videoId) {
+            if (window.db) {
+                var tx = window.db.transaction("watch_history", "readwrite");
+                var store = tx.objectStore("watch_history");
+                var instance = this;
+                var request = store.get(videoId);
+                request.onsuccess = function (event) {
+                    var video = event.target.result;
+                    if (video) {
+                        video.watchedAt = Date.now();
+                    } else {
+                        video = {
+                            videoId: videoId,
+                            title: instance.item.title,
+                            duration: instance.item.duration,
+                            thumbnail: instance.item.thumbnail,
+                            uploaderUrl: instance.item.uploaderUrl,
+                            uploaderName: instance.item.uploaderName,
+                            watchedAt: Date.now(),
+                        };
+                    }
+                    video.currentTime =
+                        instance.item.currentTime < instance.item.duration * 0.9 ? instance.item.duration : 0;
+                    store.put(video);
+                    instance.$emit("update:watched", [instance.item.url]);
+                    instance.shouldShowVideo();
+                };
+            }
+        },
     },
 };
 </script>
@@ -219,5 +270,13 @@ export default {
 <style>
 .shorts-img {
     @apply w-full object-contain;
+}
+
+.video-info {
+    @apply mt-1 text-xs text-gray-600 font-normal;
+}
+
+.dark .video-info {
+    @apply text-gray-400;
 }
 </style>
